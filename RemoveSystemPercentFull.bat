@@ -9,7 +9,7 @@ for /F "skip=2 tokens=3" %%a in ('reg query HKEY_LOCAL_MACHINE\SOFTWARE\Classes\
     set TileInfo=%%a
 )
 
-if "%TileInfo%" NEQ "prop:*System.PercentFull;System.Computer.DecoratedFreeSpace;System.Volume.FileSystem" (
+if not "%TileInfo%" == "prop:*System.PercentFull;System.Computer.DecoratedFreeSpace;System.Volume.FileSystem" (
     echo %TileInfo%
     goto EXIT
 )
