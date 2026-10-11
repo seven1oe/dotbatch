@@ -1,5 +1,8 @@
 @echo off
 
-powershell -Command "Rename-Item -Path \"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml\" -NewName \".eml_bak\""
+set "PropertyHandlersPATH=HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers"
+
+reg copy "%PropertyHandlersPATH%\.eml" "%PropertyHandlersPATH%\.eml_bak_" /s /f
+reg delete "%PropertyHandlersPATH%\.eml" /f
 
 pause
